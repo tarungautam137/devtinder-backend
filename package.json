@@ -4,8 +4,8 @@
   "description": "tinder for devs",
   "main": "index.js",
   "scripts": {
-    "start":"nodemon src/app.js",
-    "dev":"nodemon src/app.js"
+    "start": "nodemon src/app.js",
+    "dev": "nodemon src/app.js"
   },
   "keywords": [
     "nodejs",
@@ -15,6 +15,12 @@
   "author": "TARUN GAUTAM",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.21.2"
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.10.1",
+    "validator": "^13.12.0"
   }
 }
