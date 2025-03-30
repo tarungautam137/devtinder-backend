@@ -4,7 +4,9 @@ const User = require("../models/user")
 const userAuth= async (req,res,next) => {
     try{
         const {bourbon}=req.cookies
-        if(!bourbon) throw new Error("User not logged in")
+        if(!bourbon) {
+            return res.status(401).send("Please login to access this resource")
+        }
 
         const decoded=jwt.verify(bourbon,"devtinder")
         const {id}=decoded

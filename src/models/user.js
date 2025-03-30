@@ -43,10 +43,11 @@ userSchema.methods.getJWT= function(){
     const token=jwt.sign({id:user._id},"devtinder")
     return token
 }
-userSchema.methods.verifyPassword=async function(enteredPassword){
+userSchema.methods.verifyPassword=async function(passwordByUser){
 
     const user=this
-    const isCorrect=await bcrypt.compare(enteredPassword,user.password)
+    const hashedPassword=user.password
+    const isCorrect=await bcrypt.compare(passwordByUser,hashedPassword)
     return isCorrect
 }
 

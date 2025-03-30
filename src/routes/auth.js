@@ -40,7 +40,7 @@ authRouter.post("/login",async (req,res)=>{
         const user=await UserModel.findOne({email:email})
         if(!user) throw new Error("User not found")
 
-        const isMatch=user.verifyPassword(password)
+        const isMatch=await user.verifyPassword(password)
         if(!isMatch) throw new Error("Invalid password")
 
         const token=user.getJWT();
