@@ -13,7 +13,7 @@ const userSchema=new mongoose.Schema({
     lastName:{type:String,
         required:true
     },
-    age:{type:Number},
+    age:{type:Number,min:18},
 
     email:{type:String,
 
@@ -24,14 +24,27 @@ const userSchema=new mongoose.Schema({
     gender:{type:String,
         validate(value){
 
-            if(!['male','female'].includes(value)){
+            if(!['male','female',''].includes(value)){
                 throw new Error('gender must be either male or female')
             }
         }
     },
+    photoUrl: {
+        type: String,
+        default: "https://geographyandyou.com/images/user-profile.png",
+        validate(value) {
+          if (!validator.isURL(value)) {
+            throw new Error("Invalid Photo URL: " + value);
+          }
+        },
+      },
     password:{
         type:String,
         required:true
+    },
+    about:{
+        type: String,
+      default: "This is a default about of the user!"
     }
 },{
     timestamps:true,

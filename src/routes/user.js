@@ -10,7 +10,7 @@ userRouter.get("/user/requests",userAuth,async(req,res)=>{
         const crs=await connectionRequestModel.find({
             toUserId:req.user._id,
             status:"interested"
-        }).populate("fromUserId","firstName lastName")
+        }).populate("fromUserId","firstName lastName age gender photoUrl about")
 
         res.json({message:"data fetched successfully",data:crs});
     }
@@ -25,7 +25,7 @@ userRouter.get("/user/connections",userAuth,async(req,res)=>{
 
         const crs=await connectionRequestModel.find({
             $or:[{fromUserId:loggedInId,status:"accepted"},{toUserId:loggedInId,status:"accepted"}]
-        }).populate("fromUserId","firstName lastName").populate("toUserId","firstName lastName")
+        }).populate("fromUserId","firstName lastName photoUrl age gender about").populate("toUserId","firstName lastName photoUrl age gender about")
 
         const data=crs.map((row)=>{
             if(row.fromUserId._id.toString()===loggedInId.toString()) return row.toUserId;
@@ -59,7 +59,7 @@ userRouter.get("/feed",userAuth,async (req,res)=>{
         
         const users=await userModel.find({
             $and:[{_id:{$nin:Array.from(uniqueIds)}},{_id:{$ne:loggedInId}}]
-        }).select("firstName lastName").skip((page-1)*limit).limit(limit)
+        }).select("firstName lastName age gender photoUrl about").skip((page-1)*limit).limit(limit)
 
         res.send(users)
     }

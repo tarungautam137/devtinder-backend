@@ -17,7 +17,7 @@ const validate=(req)=>{
 
 const validateDataToBeUpdated = (data)=>{
 
-    const allowedFields=["firstName", "lastName", "age","gender"];
+    const allowedFields=["firstName", "lastName", "age","gender","photoUrl","about"];
 
     const canProceed=Object.keys(data).every(field=>allowedFields.includes(field))
 
