@@ -8,7 +8,7 @@ const userAuth= async (req,res,next) => {
             return res.status(401).send("Please login to access this resource")
         }
 
-        const decoded=jwt.verify(bourbon,"devtinder")
+        const decoded=jwt.verify(bourbon,process.env.JWT_SECRET)
         const {id}=decoded
 
         const user=await User.findById(id)

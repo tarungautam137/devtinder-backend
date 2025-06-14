@@ -7,6 +7,7 @@ const profileRouter=require("./routes/profile");
 const requestRouter=require("./routes/request");
 const userRouter=require("./routes/user");
 const cors=require('cors');
+require('dotenv').config();
 
 app.use(cors({origin:"http://localhost:5173",credentials:true}))
 app.use(express.json());
@@ -21,7 +22,7 @@ app.use("/",userRouter);
 connectDB().then(()=>{
 
     console.log("Database connection established")
-    app.listen(2607,()=>{console.log('server is listening at port 2607');});
+    app.listen(process.env.PORT,()=>{console.log('server is listening at port 2607');});
 }).catch(
     (err)=>{console.error("not connected")}
 )
