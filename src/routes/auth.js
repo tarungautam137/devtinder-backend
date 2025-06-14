@@ -26,7 +26,6 @@ authRouter.post("/signup",async (req,res)=>{
         const token=savedUser.getJWT();
         
         res.cookie("bourbon",token,{
-                httpOnly: true,
                 secure: true,
                 sameSite: 'none'
         })
