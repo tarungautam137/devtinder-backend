@@ -53,7 +53,10 @@ authRouter.post("/login",async (req,res)=>{
 
         const token=user.getJWT();
         
-        res.cookie("bourbon",token)
+        res.cookie("bourbon",token,{
+                secure: true,
+                sameSite: 'none'
+        })
         res.send(user)
     }
     catch(err){
