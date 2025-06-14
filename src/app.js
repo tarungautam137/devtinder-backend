@@ -9,7 +9,7 @@ const userRouter=require("./routes/user");
 const cors=require('cors');
 require('dotenv').config();
 
-app.use(cors({origin:"https://devtinder-frontend-wine.vercel.app/",credentials:true}))
+app.use(cors({origin:"https://devtinder-frontend-wine.vercel.app",credentials:true}))
 app.use(express.json());
 app.use(cookieParser());
 
