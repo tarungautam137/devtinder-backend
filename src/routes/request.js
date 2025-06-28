@@ -3,6 +3,7 @@ const connectionRequestModel=require('../models/connectionRequest');
 const express = require('express');
 const requestRouter=express.Router();
 const userModel=require('../models/user');
+const sendmail=require('../utils/sendmail');
 
 requestRouter.post("/request/send/:status/:toUserId",userAuth,async (req,res) => {
 
@@ -28,6 +29,9 @@ requestRouter.post("/request/send/:status/:toUserId",userAuth,async (req,res) =>
         // FINALLY SAVE THE CONNECTION REQUEST
         const cr=new connectionRequestModel({fromUserId,toUserId,status});
         const data=await cr.save();
+
+        //SEND MAIL
+        await sendmail();
 
         res.json({
             message:"connection request sent successfully",data

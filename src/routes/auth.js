@@ -69,6 +69,7 @@ authRouter.post("/logout",(req,res)=>{
     secure: true,
     sameSite: 'none',
     });
+    
     res.send("Logged out successfully");
 })
 
