@@ -13,8 +13,8 @@ const cors=require('cors');
 require('dotenv').config();
 require("./utils/cronjob"); // Importing cron job to run it
 
-app.use(cors({origin:"http://localhost:5173",credentials:true}))
-//app.use(cors({origin:"https://devtinder-frontend-wine.vercel.app",credentials:true}))
+//app.use(cors({origin:"http://localhost:5173",credentials:true}))
+app.use(cors({origin:"https://devtinder-frontend-wine.vercel.app",credentials:true}))
 app.use(express.json());
 app.use(cookieParser());
 
