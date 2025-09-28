@@ -36,6 +36,7 @@ requestRouter.post("/request/send/:status/:toUserId",userAuth,async (req,res) =>
     }
     catch(err){res.status(400).send(err.message)}
 })
+
 requestRouter.post("/request/review/:status/:requestId",userAuth,async(req,res)=>{
     try{
         // CHECK  STATUS
