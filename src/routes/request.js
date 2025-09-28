@@ -3,7 +3,7 @@ const connectionRequestModel=require('../models/connectionRequest');
 const express = require('express');
 const requestRouter=express.Router();
 const userModel=require('../models/user');
-const sendmail=require('../utils/sendmail');
+
 
 requestRouter.post("/request/send/:status/:toUserId",userAuth,async (req,res) => {
 
