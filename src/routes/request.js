@@ -30,9 +30,6 @@ requestRouter.post("/request/send/:status/:toUserId",userAuth,async (req,res) =>
         const cr=new connectionRequestModel({fromUserId,toUserId,status});
         const data=await cr.save();
 
-        //SEND MAIL
-        await sendmail();
-
         res.json({
             message:"connection request sent successfully",data
         })

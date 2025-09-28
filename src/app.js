@@ -8,14 +8,16 @@ const requestRouter=require("./routes/request");
 const userRouter=require("./routes/user");
 const chatRouter=require("./routes/chat");
 const cors=require('cors');
- const initialiseSocket=require('./utils/socket'); 
+const initialiseSocket=require('./utils/socket'); 
 
 require('dotenv').config();
 require("./utils/cronjob"); // Importing cron job to run it
 
-//app.use(cors({origin:"http://localhost:5173",credentials:true}))
-app.use(cors({origin:"https://devtinder-frontend-wine.vercel.app",credentials:true}))
+app.use(cors({origin:"http://localhost:5173",credentials:true}))
+//app.use(cors({origin:"https://devtinder-frontend-wine.vercel.app",credentials:true}))
+
 app.use(express.json());
+
 app.use(cookieParser());
 
 
